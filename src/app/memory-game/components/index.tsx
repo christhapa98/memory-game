@@ -9,7 +9,7 @@ import Game from './game/game';
 import CloseModal from './game/modal/close.modal';
 import Ended from './ended';
 
-export default function () {
+export default function MemoryGame () {
     const {
         gameState,
     } = memoryGameStore();
