@@ -5,7 +5,7 @@ import { PowerIcon } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button';
 
-import memoryGameStore from '@/app/memory-game/store/store';
+import memoryGameStore from '@/app/(home)/store/store';
 
 export default function CloseModal() {
     const { setFirstCard, setSecondCard, setMatchedCards, setGameState } = memoryGameStore();
