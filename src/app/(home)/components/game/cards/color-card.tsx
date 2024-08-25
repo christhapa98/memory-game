@@ -1,18 +1,26 @@
+import React, { useEffect } from 'react'
 import { Card } from '@/components/ui/card'
-import React, { useEffect, useState, useTransition } from 'react'
-import memoryGameStore from '../store/store';
+import memoryGameStore from '@/app/(home)/store/store';
 
-export default function MemoryCard({ color, index }: { color: string, index: number }) {
-    const { firstCard, setFirstCard, secondCard, setSecondCard, matchedCards, complexity, gameType } = memoryGameStore();
-    const [isMatched, setIsMatched] = useState(false)
-    const [_, setTransition] = useTransition()
+export default function ColorCard({ color, index, isMatched, setIsMatched }: { color: string, index: number, isMatched: boolean, setIsMatched: any }) {
+    const {
+        firstCard,
+        setFirstCard,
+        secondCard,
+        setSecondCard,
+        matchedCards,
+        complexity,
+        gameType
+    } = memoryGameStore();
 
     function handleSelectCard() {
-        if (firstCard != null) {
-            setSecondCard({ index, color })
-        }
-        else {
-            setFirstCard({ index, color });
+        if (!isMatched) {
+            if (firstCard != null) {
+                setSecondCard({ index, color })
+            }
+            else {
+                setFirstCard({ index, color });
+            }
         }
     }
 
@@ -30,17 +38,6 @@ export default function MemoryCard({ color, index }: { color: string, index: num
             }
         }
     }, [firstCard, secondCard])
-
-    useEffect(() => {
-        setIsMatched(true);
-        setTransition(() => {
-            setTimeout(() => {
-                setIsMatched(false);
-            },
-                complexity === "Easy" ? 300 : complexity === "Medium" ? 500 : complexity === "Hard" ? 3000 : 6000
-            );
-        })
-    }, [])
 
     return (
         <Card
@@ -60,7 +57,7 @@ export default function MemoryCard({ color, index }: { color: string, index: num
                     }}>
                     {isMatched && color}
                 </div>}
+
         </Card>
     )
 }
-

@@ -3,6 +3,7 @@ import memoryGameStore from "../store/store";
 import { GameType } from "../types";
 import generateNumbers from "../helpers/numbers";
 import { generateColors } from "../helpers/colors";
+import generateNumberSequence from "../helpers/numbers-sequence";
 
 export default function useMemoryGame() {
     const { complexity,
@@ -30,13 +31,16 @@ export default function useMemoryGame() {
             setGameCards(generateColors(complexity))
         } else if (gameType === "Number") {
             setGameCards(generateNumbers(complexity))
+        }
+        else if (gameType === "Number-Sequence") {
+            setGameCards(generateNumberSequence(complexity))
         } else {
             setGameCards(generateColors(complexity));
         }
     }, [])
 
     useEffect(() => {
-        if (secondCard) {
+        if (secondCard && gameType !== "Number-Sequence") {
             setTimeout(() => {
                 if (firstCard!.color === secondCard!.color) {
                     setMatchedCards([...matchedCards, firstCard!, secondCard])
@@ -48,19 +52,26 @@ export default function useMemoryGame() {
                 setFirstCard(null)
                 setSecondCard(null)
             }, 300);
+        } else {
+
         }
     }, [secondCard])
 
     useEffect(() => {
-        const matchCounts = {
-            "Easy": 8,
-            "Medium": 16,
-            "Hard": 32,
-            "Extreme": 32
-        };
+        if (gameType === "Number-Sequence") {
 
-        if (matchedCards.length === matchCounts[complexity] * 2) {
-            endGame();
+        }
+        else {
+            const matchCounts = {
+                "Easy": 8,
+                "Medium": 16,
+                "Hard": 24,
+                "Extreme": 24
+            };
+
+            if (matchedCards.length === matchCounts[complexity] * 2) {
+                endGame();
+            }
         }
     }, [matchedCards])
 

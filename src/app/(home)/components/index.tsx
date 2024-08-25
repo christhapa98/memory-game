@@ -4,12 +4,10 @@ import React from 'react'
 import memoryGameStore from '../store/store'
 import Newgame from './new-game';
 import InfoDrawer from './info/info.drawer';
-import GameBackButton from './info/back-button';
 import Game from './game/game';
-import CloseModal from './game/modal/close.modal';
 import Ended from './ended';
 
-export default function MemoryGame () {
+export default function MemoryGame() {
     const {
         gameState,
     } = memoryGameStore();
@@ -23,8 +21,10 @@ export default function MemoryGame () {
 
     if (gameState === "Playing") {
         return <div className='relative p-5 h-screen w-screen'>
+            <div className='space-y-6 relative h-full flex flex-col justify-center w-full items-center'>
                 <Game />
             </div>
+        </div>
     }
 
     return <div className='flex justify-center items-center h-screen w-screen p-5'>
