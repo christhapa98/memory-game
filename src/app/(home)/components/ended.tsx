@@ -49,7 +49,7 @@ const ResultGame = () => {
     <div className={`grid ${complexity === "Easy" ? "grid-cols-4" : "grid-cols-8"} gap-5`}>
       {matchedCards.sort((a, b) => a.index - b.index).map((card, index) =>
         <Card key={index}
-          className='h-20 w-20 hover:scale-105 cursor-pointer transition-all'
+          className='h-16 w-16 lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all'
           style={{ backgroundColor: card.color }}>
         </Card>
       )}

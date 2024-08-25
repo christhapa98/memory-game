@@ -1,10 +1,7 @@
 import { create } from "zustand";
+import { Complexity, GameState, GameType } from "../types";
 
-type Complexity = "Easy" | "Medium" | "Hard" | "Extreme";
 
-type GameState = "New" | "Playing" | "Ended" | "Quited";
-
-export type GameType = "Color" | "Image" | "number";
 
 type MemoryGameStore = {
     playerName: string;

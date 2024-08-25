@@ -55,9 +55,9 @@ export default function Newgame() {
                                 <SelectValue placeholder={gameType} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="color">Color</SelectItem>
+                                <SelectItem value="Color">Color</SelectItem>
                                 {/* <SelectItem value="images">Images</SelectItem> */}
-                                <SelectItem value="number">Number</SelectItem>
+                                <SelectItem value="Number">Number</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>

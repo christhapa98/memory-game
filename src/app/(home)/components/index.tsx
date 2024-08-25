@@ -15,25 +15,19 @@ export default function MemoryGame () {
     } = memoryGameStore();
 
     if (gameState === "New") {
-        return <div className='flex justify-center items-center h-screen w-screen relative'>
+        return <div className='flex justify-center items-center h-screen w-screen relative p-5 lg:p-0'>
             <Newgame />
             <InfoDrawer />
         </div>
     }
 
     if (gameState === "Playing") {
-        return <div className='relative'>
-            <div className='flex justify-center items-center h-screen w-screen '>
+        return <div className='relative p-5 h-screen w-screen'>
                 <Game />
             </div>
-            <div className='space-y-4 pr-5 absolute bottom-8 right-8'>
-                <GameBackButton />
-                <CloseModal />
-            </div>
-        </div>
     }
 
-    return <div className='flex justify-center items-center h-screen w-screen '>
+    return <div className='flex justify-center items-center h-screen w-screen p-5'>
         <Ended />
     </div>
 }

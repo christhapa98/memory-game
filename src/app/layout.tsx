@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Memory Game",
   description: "Created by Chris Thapa",
-  icons:"favicon.ico"
 };
 
 export default function RootLayout({

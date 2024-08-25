@@ -37,7 +37,7 @@ export default function MemoryCard({ color, index }: { color: string, index: num
             setTimeout(() => {
                 setIsMatched(false);
             },
-                complexity === "Easy" ? 300 : complexity === "Medium" ? 500 : complexity === "Hard" ? 2000 : 4000
+                complexity === "Easy" ? 300 : complexity === "Medium" ? 500 : complexity === "Hard" ? 3000 : 6000
             );
         })
     }, [])
@@ -45,13 +45,14 @@ export default function MemoryCard({ color, index }: { color: string, index: num
     return (
         <Card
             onClick={() => { handleSelectCard() }}
-            className='h-20 w-20 hover:scale-105 cursor-pointer transition-all'
+            className={`${complexity === "Hard" || complexity === "Extreme" ? "h-12 w-12" : "h-16 w-16"} lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all rounded`}
         >
             {gameType === 'Color' && <div
+                className='h-full w-full rounded'
                 style={{
                     backgroundColor: !isMatched ? "white" : color
-                }} />}
-            {gameType === 'number' &&
+                }} ></div>}
+            {gameType === 'Number' &&
                 <div className='flex items-center justify-center h-full'
                     style={{
                         backgroundColor: isMatched ? "gray" : "white",
