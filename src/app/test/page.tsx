@@ -9,6 +9,9 @@ const ClientComponent = () => {
     const login = async () => {
         const { error, data } = await supabase.auth.signInWithOAuth({
             provider: "google",
+            options: {
+                redirectTo: "https://memory-game.christhapa.com.np"
+            }
         })
         console.log(error, data)
     }
