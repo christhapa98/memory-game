@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
-import memoryGameStore from '../store/store'
+import memoryGameStore from '../../store/store'
 
 export default function Newgame() {
     const playernameRef = useRef<HTMLInputElement>(null);

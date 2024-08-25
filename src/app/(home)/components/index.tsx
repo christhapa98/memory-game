@@ -2,10 +2,10 @@
 import React from 'react'
 
 import memoryGameStore from '../store/store'
-import Newgame from './new-game';
-import InfoDrawer from './info/info.drawer';
+import Newgame from './game-states/new-game';
+import InfoDrawer from './game-info/info.drawer';
 import Game from './game/game';
-import Ended from './ended';
+import Ended from './game-states/ended';
 
 export default function MemoryGame() {
     const {

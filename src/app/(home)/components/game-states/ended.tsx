@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card'
 import React from 'react'
 import { Button } from '@/components/ui/button';
-import memoryGameStore from '../store/store';
+import memoryGameStore from '../../store/store';
 
 function getTimeDifference(start: Date, end: Date): string {
   if (!(start instanceof Date) || !(end instanceof Date)) {

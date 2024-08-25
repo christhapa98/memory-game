@@ -1,6 +1,6 @@
 import memoryGameStore from "../../store/store";
 import CountdownTimer from "./countdown-timer";
-import GameBackButton from "../info/back-button";
+import GameBackButton from "../game-info/back-button";
 import CloseModal from "./modal/close.modal";
 import Timer from "@/components/game-timer";
 
