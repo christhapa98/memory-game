@@ -3,7 +3,7 @@
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useState, useEffect } from "react"
 
-export const ClientComponent = () => {
+const ClientComponent = () => {
     const supabase = createClientComponentClient()
     const [users, setUsers] = useState<any[]>([])
 
