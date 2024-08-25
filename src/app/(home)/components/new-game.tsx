@@ -59,6 +59,7 @@ export default function Newgame() {
                                 {/* <SelectItem value="images">Images</SelectItem> */}
                                 <SelectItem value="Number">Number</SelectItem>
                                 <SelectItem value="Number-Sequence">Number Sequence</SelectItem>
+                                <SelectItem value="Emoji">Emoji</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>

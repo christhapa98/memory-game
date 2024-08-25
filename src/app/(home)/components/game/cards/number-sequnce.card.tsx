@@ -1,8 +1,9 @@
 import memoryGameStore from '@/app/(home)/store/store';
+import { GameCardProp } from '@/app/(home)/types';
 import { Card } from '@/components/ui/card'
 import React, { useEffect } from 'react'
 
-export default function NumberSequenceCard({ color, index, isMatched, setIsMatched }: { color: string, index: number, isMatched: boolean, setIsMatched: any }) {
+export default function NumberSequenceCard({ color, index, isMatched, setIsMatched }: GameCardProp) {
     const { complexity, matchedCards, setMatchedCards } = memoryGameStore();
 
     const handleNumberSequenceSelect = () => {

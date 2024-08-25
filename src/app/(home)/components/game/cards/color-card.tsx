@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Card } from '@/components/ui/card'
 import memoryGameStore from '@/app/(home)/store/store';
+import { GameCardProp } from '@/app/(home)/types';
 
-export default function ColorCard({ color, index, isMatched, setIsMatched }: { color: string, index: number, isMatched: boolean, setIsMatched: any }) {
+export default function ColorCard({ color, index, isMatched, setIsMatched }: GameCardProp) {
     const {
         firstCard,
         setFirstCard,
@@ -39,6 +40,15 @@ export default function ColorCard({ color, index, isMatched, setIsMatched }: { c
         }
     }, [firstCard, secondCard])
 
+    if (gameType === 'Emoji') {
+        return <div
+            className={`${complexity === "Hard" || complexity === "Extreme" ? "h-12 w-12" : "h-16 w-16"} lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all rounded text-[40px] flex items-center justify-center border`}
+            onClick={() => { handleSelectCard() }}
+        >
+            {isMatched && color}
+        </div>
+    }
+
     return (
         <Card
             onClick={() => { handleSelectCard() }}
@@ -57,7 +67,6 @@ export default function ColorCard({ color, index, isMatched, setIsMatched }: { c
                     }}>
                     {isMatched && color}
                 </div>}
-
         </Card>
     )
 }

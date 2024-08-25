@@ -4,6 +4,7 @@ import { GameType } from "../types";
 import generateNumbers from "../helpers/numbers";
 import { generateColors } from "../helpers/colors";
 import generateNumberSequence from "../helpers/numbers-sequence";
+import generateEmojis from "../helpers/emoji";
 
 export default function useMemoryGame() {
     const { complexity,
@@ -31,6 +32,9 @@ export default function useMemoryGame() {
             setGameCards(generateColors(complexity))
         } else if (gameType === "Number") {
             setGameCards(generateNumbers(complexity))
+        }
+        else if (gameType === "Emoji") {
+            setGameCards(generateEmojis(complexity))
         }
         else if (gameType === "Number-Sequence") {
             setGameCards(generateNumberSequence(complexity))
