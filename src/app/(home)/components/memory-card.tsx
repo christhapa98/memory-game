@@ -47,7 +47,7 @@ export default function MemoryCard({ color, index }: { color: string, index: num
             onClick={() => { handleSelectCard() }}
             className='h-20 w-20 hover:scale-105 cursor-pointer transition-all'
         >
-            {gameType === 'color' && <div
+            {gameType === 'Color' && <div
                 style={{
                     backgroundColor: !isMatched ? "white" : color
                 }} />}

@@ -23,7 +23,7 @@ export default function useMemoryGame() {
     }
 
     useEffect(() => {
-        if (gameType === "color") {
+        if (gameType === "Color") {
             setGameCards(generateCards(complexity))
         } else if (gameType === "number") {
             setGameCards(generateNumbers(complexity))
