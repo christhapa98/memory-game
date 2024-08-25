@@ -4,11 +4,13 @@ type Complexity = "Easy" | "Medium" | "Hard" | "Extreme";
 
 type GameState = "New" | "Playing" | "Ended" | "Quited";
 
+export type GameType = "Color" | "Image" | "number";
+
 type MemoryGameStore = {
     playerName: string;
     complexity: Complexity;
     gameState: GameState;
-    gameType: string;
+    gameType: GameType;
     startTime: string | null;
     endTime: string | null;
     hasGameTimer: boolean;
@@ -17,7 +19,7 @@ type MemoryGameStore = {
     secondCard: { index: number, color: string } | null;
     matchedCards: { index: number, color: string }[];
     setGameTimer: (gameTimer: string) => void;
-    setGameType: (gameType: string) => void;
+    setGameType: (gameType: GameType) => void;
     setPlayerName: (playerName: string) => void;
     setComplexity: (complexity: Complexity) => void;
     setGameState: (gameState: GameState) => void;
@@ -32,7 +34,7 @@ type MemoryGameStore = {
 const memoryGameStore = create<MemoryGameStore>((set) => ({
     playerName: "Player",
     complexity: "Easy",
-    gameType: "color",
+    gameType: "Color",
     gameState: "New",
     hasGameTimer: false,
     startTime: null,
@@ -40,8 +42,8 @@ const memoryGameStore = create<MemoryGameStore>((set) => ({
     matchedCards: [],
     firstCard: null,
     secondCard: null,
-    gameTimer: "3",
-    setGameType: (gameType: string) => set({ gameType }),
+    gameTimer: "3m",
+    setGameType: (gameType: GameType) => set({ gameType }),
     setGameTimer: (gameTimer: string) => set({ gameTimer }),
     setPlayerName: (playerName: string) => set({ playerName }),
     setComplexity: (complexity: Complexity) => set({ complexity }),

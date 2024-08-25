@@ -3,7 +3,7 @@ import React, { useEffect, useState, useTransition } from 'react'
 import memoryGameStore from '../store/store';
 
 export default function MemoryCard({ color, index }: { color: string, index: number }) {
-    const { firstCard, setFirstCard, secondCard, setSecondCard, matchedCards,complexity } = memoryGameStore();
+    const { firstCard, setFirstCard, secondCard, setSecondCard, matchedCards, complexity, gameType } = memoryGameStore();
     const [isMatched, setIsMatched] = useState(false)
     const [_, setTransition] = useTransition()
 
@@ -37,7 +37,7 @@ export default function MemoryCard({ color, index }: { color: string, index: num
             setTimeout(() => {
                 setIsMatched(false);
             },
-            complexity === "Easy" ? 300 : complexity === "Medium" ? 500 : complexity === "Hard" ? 2000 : 4000
+                complexity === "Easy" ? 300 : complexity === "Medium" ? 500 : complexity === "Hard" ? 2000 : 4000
             );
         })
     }, [])
@@ -46,7 +46,19 @@ export default function MemoryCard({ color, index }: { color: string, index: num
         <Card
             onClick={() => { handleSelectCard() }}
             className='h-20 w-20 hover:scale-105 cursor-pointer transition-all'
-            style={{ backgroundColor: !isMatched ? "white" : color }}>
+        >
+            {gameType === 'color' && <div
+                style={{
+                    backgroundColor: !isMatched ? "white" : color
+                }} />}
+            {gameType === 'number' &&
+                <div className='flex items-center justify-center h-full'
+                    style={{
+                        backgroundColor: isMatched ? "gray" : "white",
+                        color: isMatched ? "white" : "black"
+                    }}>
+                    {isMatched && color}
+                </div>}
         </Card>
     )
 }

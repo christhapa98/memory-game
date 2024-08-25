@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import memoryGameStore from "../store/store";
+import memoryGameStore, { GameType } from "../store/store";
 
 export default function useMemoryGame() {
     const { complexity,
@@ -14,7 +14,7 @@ export default function useMemoryGame() {
         gameType
     } = memoryGameStore();
 
-    const [gameCards, setGameCards] = useState<any[]>([]);
+    const [gameCards, setGameCards] = useState<GameType[]>([]);
 
 
     function endGame() {
@@ -25,6 +25,8 @@ export default function useMemoryGame() {
     useEffect(() => {
         if (gameType === "color") {
             setGameCards(generateCards(complexity))
+        } else if (gameType === "number") {
+            setGameCards(generateNumbers(complexity))
         } else {
             setGameCards(generateCards(complexity));
         }
@@ -62,6 +64,42 @@ export default function useMemoryGame() {
     return { gameCards }
 }
 
+// numbers
+function generateNumbers(complexity: string): any[] {
+    switch (complexity) {
+        case "Easy":
+            return generateGameNumbers(8);
+        case "Medium":
+            return generateGameNumbers(16);
+        case "Hard":
+            return generateGameNumbers(32);
+        case "Extreme":
+            return generateGameNumbers(32);
+        default:
+            return generateGameNumbers(32);
+    }
+}
+
+function generateGameNumbers(length: number) {
+    const color = generateRandomNumbersArray(length);
+    const gameColors = shuffle([...color, ...color]);
+    return gameColors
+};
+
+function generateRandomNumbersArray(length: number) {
+    const numbersArray = [];
+    for (let i = 0; i < length; i++) {
+        numbersArray.push(getRandomNumber());
+    }
+    return numbersArray;
+}
+
+function getRandomNumber(): number {
+    return Math.floor(Math.random() * 64) + 1;
+}
+
+// numbers
+
 function generateCards(complexity: string): any[] {
     switch (complexity) {
         case "Easy":
@@ -76,7 +114,6 @@ function generateCards(complexity: string): any[] {
             return generateGameColor(32);
     }
 }
-
 
 function shuffle(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
