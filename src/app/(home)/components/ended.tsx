@@ -16,7 +16,7 @@ function getTimeDifference(start: Date, end: Date): string {
 }
 export default function Ended() {
   const { startTime,
-    endTime, playerName, setStartTime,setMatchedCards,
+    endTime, playerName, setStartTime, setMatchedCards,
     setGameState, setFirstCard, setSecondCard } = memoryGameStore()
   return (
     <Card className='p-8 space-y-5 text-center'>
@@ -44,13 +44,15 @@ export default function Ended() {
 }
 
 const ResultGame = () => {
-  const { matchedCards, complexity } = memoryGameStore()
+  const { matchedCards, complexity, gameType } = memoryGameStore()
+
   return <div>
     <div className={`grid ${complexity === "Easy" ? "grid-cols-4" : "grid-cols-8"} gap-5`}>
       {matchedCards.sort((a, b) => a.index - b.index).map((card, index) =>
         <Card key={index}
-          className='h-16 w-16 lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all'
+          className='h-16 w-16 lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all flex items-center justify-center'
           style={{ backgroundColor: card.color }}>
+          {gameType !== "Color" && card.color}
         </Card>
       )}
     </div>

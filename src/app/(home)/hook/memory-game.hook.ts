@@ -59,7 +59,16 @@ export default function useMemoryGame() {
 
     useEffect(() => {
         if (gameType === "Number-Sequence") {
+            const matchCounts = {
+                "Easy": 16,
+                "Medium": 32,
+                "Hard": 48,
+                "Extreme": 48
+            };
 
+            if (matchedCards.length === matchCounts[complexity]) {
+                endGame();
+            }
         }
         else {
             const matchCounts = {
