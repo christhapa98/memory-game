@@ -54,19 +54,31 @@ export default function ColorCard({ color, index, isMatched, setIsMatched }: Gam
             onClick={() => { handleSelectCard() }}
             className={`${complexity === "Hard" || complexity === "Extreme" ? "h-12 w-12" : "h-16 w-16"} lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all rounded`}
         >
-            {gameType === 'Color' && <div
-                className='h-full w-full rounded'
-                style={{
-                    backgroundColor: !isMatched ? "white" : color
-                }} ></div>}
-            {gameType === 'Number' &&
-                <div className='flex items-center justify-center h-full'
-                    style={{
-                        backgroundColor: isMatched ? "gray" : "white",
-                        color: isMatched ? "white" : "black"
-                    }}>
-                    {isMatched && color}
-                </div>}
+            <FlipCard isMatched={isMatched} color={color} />
         </Card>
     )
 }
+
+function FlipCard({ isMatched, color, isColor = false }: { isMatched: boolean, color: string, isColor?: boolean }) {
+    const {
+        gameType
+    } = memoryGameStore();
+    if (gameType === 'Color') {
+        return (
+            <div className={`rounded-lg border  text-card-foreground shadow-sm  flip-inner bg-card ${!isMatched ? "flipped" : ""}`}>
+                <div style={{ backgroundColor: "white" }} className="flip-front 'h-full w-full rounded'" />
+                <div style={{ backgroundColor: color }} className="flip-front 'h-full w-full rounded'" />
+            </div>
+        )
+    }
+    return (
+        <>
+            <div className={`rounded-lg border  text-card-foreground shadow-sm flip-inner bg-card ${isMatched ? "flipped" : ""}`}>
+                <div style={{ color: 'gray', backgroundColor: isColor ? color : 'white' }} className="flip-front flex items-center justify-center h-full" />
+                <div style={{ color: isColor ? color : 'white', backgroundColor: 'black' }} className="flip-back flex items-center justify-center bg-red-500 text-white">
+                    {color}
+                </div>
+            </div>
+        </>
+    );
+};
