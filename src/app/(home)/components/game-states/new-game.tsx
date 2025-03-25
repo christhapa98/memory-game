@@ -40,7 +40,7 @@ export default function Newgame() {
     }, [])
 
     return (
-        <Card className='p-6 w-[500px]'>
+        <Card className='p-6 w-[500px] rounded-lg border bg-card'>
             <div className='w-full space-y-5'>
                 <h2 className='text-3xl pb-4'>Memory Game</h2>
                 <div className='space-y-4'>

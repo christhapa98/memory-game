@@ -55,7 +55,7 @@ export default function useMemoryGame() {
                 }
                 setFirstCard(null)
                 setSecondCard(null)
-            }, 300);
+            }, 800);
         } else {
 
         }

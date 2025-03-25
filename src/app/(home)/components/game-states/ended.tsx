@@ -50,7 +50,7 @@ const ResultGame = () => {
     <div className={`grid ${complexity === "Easy" ? "grid-cols-4" : "grid-cols-8"} gap-5`}>
       {matchedCards.sort((a, b) => a.index - b.index).map((card, index) =>
         <Card key={index}
-          className='h-16 w-16 lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all flex items-center justify-center'
+          className='h-16 w-16 lg:h-20 lg:w-20 hover:scale-105 cursor-pointer transition-all flex items-center justify-center rounded-lg border bg-card'
           style={{ backgroundColor: card.color }}>
           {gameType !== "Color" && card.color}
         </Card>
